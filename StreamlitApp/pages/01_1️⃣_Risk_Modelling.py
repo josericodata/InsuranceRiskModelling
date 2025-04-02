@@ -1,14 +1,14 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 from sklearn.linear_model import LogisticRegression
 
-
 st.set_page_config(
-	    page_title="EE Claim Risk Predictor",
-	    page_icon="🚨",
-	    layout="centered",
-    )
+    page_title="EE Claim Risk Predictor",
+    page_icon="🚨",
+    layout="centered",
+)
 
 st.title("🚗 EE Insurance - Claim Risk Predictor")
 
@@ -49,10 +49,28 @@ st.subheader("📊 Prediction")
 st.metric(label="Predicted Claim Probability", value=f"{row['claim_probability']:.2%}")
 st.metric(label="Predicted Outcome", value="Will Claim" if row['prediction'] == 1 else "No Claim")
 
-# Plot: risk distribution
+# Plot: risk distribution (AA colors)
 st.subheader("📈 Risk Distribution Across All Customers")
-fig = px.histogram(df, x="claim_probability", nbins=20, title="Predicted Claim Probabilities", labels={"claim_probability": "Claim Probability"})
-fig.update_layout(bargap=0.1)
+fig = px.histogram(
+    df,
+    x="claim_probability",
+    nbins=20,
+    title="Predicted Claim Probabilities",
+    labels={"claim_probability": "Claim Probability"}
+)
+
+# Apply black-on-yellow branding
+fig.update_traces(marker_color="black")
+fig.update_layout(
+    plot_bgcolor="#FFD700",       # Yellow chart area
+    paper_bgcolor="#FFD700",      # Yellow background
+    font=dict(color="black"),     # Black text
+    title_font=dict(color="black"),
+    xaxis=dict(title_font=dict(color="black"), tickfont=dict(color="black")),
+    yaxis=dict(title_font=dict(color="black"), tickfont=dict(color="black")),
+    bargap=0.1
+)
+
 st.plotly_chart(fig, use_container_width=True)
 
 # Optional full dataset
