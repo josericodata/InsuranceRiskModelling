@@ -50,7 +50,7 @@ def run():
         ### 🧪 Dataset Info
 
         The app uses a synthetic dataset located at:
-        `DataGeneration/synthetic_insurance.csv`
+        `DataGeneration/SyntheticInsurance.csv`
 
         It is generated with the `Faker` library and simulates 100,000 customers with fields including:
         - `age`, `vehicle_age`, `vehicle_type`

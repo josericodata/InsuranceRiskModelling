@@ -15,7 +15,7 @@ st.title("🚗 EE Insurance - Claim Risk Predictor")
 # Load the synthetic data
 @st.cache_data
 def load_data():
-    return pd.read_csv("assets/DataGeneration/synthetic_insurance.csv")
+    return pd.read_csv("assets/DataGeneration/SyntheticInsurance.csv")
 
 df = load_data()
 
