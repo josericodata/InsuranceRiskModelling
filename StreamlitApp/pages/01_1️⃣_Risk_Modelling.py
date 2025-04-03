@@ -68,7 +68,11 @@ fig.update_layout(
     title_font=dict(color="black"),
     xaxis=dict(title_font=dict(color="black"), tickfont=dict(color="black")),
     yaxis=dict(title_font=dict(color="black"), tickfont=dict(color="black")),
-    bargap=0.1
+    bargap=0.1,
+    hoverlabel=dict(
+        bgcolor="#FFD700",        # Tooltip background
+        font=dict(color="black")  # Tooltip text
+    )
 )
 
 st.plotly_chart(fig, use_container_width=True)
